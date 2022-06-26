@@ -1,48 +1,74 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-    BrowserRouter,
+    HashRouter,
     Routes,
     Route,
 } from "react-router-dom";
 function App() {
   return (
-      <BrowserRouter>
-          <h1>Welcome to React Router!</h1>
-          <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="about" element={<About />} />
+      <HashRouter>
+          <nav><ul>
+              <li><Link to="/tags">标签页</Link></li>
+              <li><Link to="/money">记账页</Link></li>
+              <li><Link to="/statistics">统计页</Link></li>
+          </ul>
+          </nav>
+          <Routes >
+              <Route>
+                  <Route path="/" element={<Money />} /> {/*默认页面*/}
+                  <Route path="/tags" element={<Tags />} />
+                  <Route path="/money" element={<Money />} />
+                  <Route path="/statistics" element={<Statistics />} />
+                  {/*错误页面*/}
+                  <Route
+                      path="*"
+                      element={
+                          <main style={{ padding: "1rem" }}>
+                              <h1>404!</h1>
+                          </main>
+                      }
+                  />
+              </Route>
           </Routes>
-      </BrowserRouter>
+      </HashRouter>
   );
 }
-function Home() {
+function Tags() {
     return (
         <>
             <main>
-                <h2>Welcome to the homepage!</h2>
+                <h2>标签页</h2>
                 <p>You can do this, I believe in you.</p>
             </main>
-            <nav>
-                <Link to="/about">About</Link>
-            </nav>
         </>
     );
 }
 
-function About() {
+function Money() {
     return (
         <>
             <main>
-                <h2>Who are we?</h2>
+                <h2>记账页</h2>
                 <p>
                     That feels like an existential question, don't you
                     think?
                 </p>
             </main>
-            <nav>
-                <Link to="/">Home</Link>
-            </nav>
+        </>
+    );
+}
+
+function Statistics() {
+    return (
+        <>
+            <main>
+                <h2>统计页</h2>
+                <p>
+                    That feels like an existential question, don't you
+                    think?
+                </p>
+            </main>
         </>
     );
 }
