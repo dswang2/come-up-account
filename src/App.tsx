@@ -6,6 +6,7 @@ import {
     Route,
 } from "react-router-dom";
 import styled from 'styled-components';
+import { Nav } from "./components/Nav";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -16,19 +17,7 @@ const Main = styled.div`
   flex-grow: 1; // 膨胀指数
   overflow: auto;
 `;
-const Nav = styled.nav`
-  border: 1px solid red;
-  >ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    >li{
-      padding: 16px;
-      flex-grow: 1; // flex布局占比放大
-      text-align: center; // 文字居中
-    }
-  }
-`;
+
 
 function App() {
     return (
@@ -53,13 +42,7 @@ function App() {
                         </Route>
                     </Routes>
                 </Main>
-                <Nav>
-                    <ul>
-                        <li><Link to="/tags">标签页</Link></li>
-                        <li><Link to="/money">记账页</Link></li>
-                        <li><Link to="/statistics">统计页</Link></li>
-                    </ul>
-                </Nav>
+                <Nav/>
             </Wrapper>
         </HashRouter>
     );

@@ -1,4 +1,5 @@
 @import-normalize;
+@import "helper";
 * {
   margin: 0;
   padding: 0;
@@ -39,4 +40,9 @@ ol {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+body{
+  font-family:$font-hei;
+  font-size: 16px;
+  line-height: 1.2; // 行高，默认的是1.15，按照常规来说设置成1.2，一开始就要设置好
 }
