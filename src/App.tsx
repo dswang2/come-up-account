@@ -5,34 +5,64 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+const Main = styled.div`
+  flex-grow: 1; // 膨胀指数
+  overflow: auto;
+`;
+const Nav = styled.nav`
+  border: 1px solid red;
+  >ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    >li{
+      padding: 16px;
+      flex-grow: 1; // flex布局占比放大
+      text-align: center; // 文字居中
+    }
+  }
+`;
+
 function App() {
-  return (
-      <HashRouter>
-          <nav><ul>
-              <li><Link to="/tags">标签页</Link></li>
-              <li><Link to="/money">记账页</Link></li>
-              <li><Link to="/statistics">统计页</Link></li>
-          </ul>
-          </nav>
-          <Routes >
-              <Route>
-                  <Route path="/" element={<Money />} /> {/*默认页面*/}
-                  <Route path="/tags" element={<Tags />} />
-                  <Route path="/money" element={<Money />} />
-                  <Route path="/statistics" element={<Statistics />} />
-                  {/*错误页面*/}
-                  <Route
-                      path="*"
-                      element={
-                          <main style={{ padding: "1rem" }}>
-                              <h1>404!</h1>
-                          </main>
-                      }
-                  />
-              </Route>
-          </Routes>
-      </HashRouter>
-  );
+    return (
+        <HashRouter>
+            <Wrapper>
+                <Main>
+                    <Routes>
+                        <Route>
+                            <Route path="/" element={<Money/>}/> {/*默认页面*/}
+                            <Route path="/tags" element={<Tags/>}/>
+                            <Route path="/money" element={<Money/>}/>
+                            <Route path="/statistics" element={<Statistics/>}/>
+                            {/*错误页面*/}
+                            <Route
+                                path="*"
+                                element={
+                                    <main style={{ padding: "1rem" }}>
+                                        <h1>404!</h1>
+                                    </main>
+                                }
+                            />
+                        </Route>
+                    </Routes>
+                </Main>
+                <Nav>
+                    <ul>
+                        <li><Link to="/tags">标签页</Link></li>
+                        <li><Link to="/money">记账页</Link></li>
+                        <li><Link to="/statistics">统计页</Link></li>
+                    </ul>
+                </Nav>
+            </Wrapper>
+        </HashRouter>
+    );
 }
 function Tags() {
     return (
