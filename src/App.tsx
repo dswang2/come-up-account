@@ -4,24 +4,10 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import styled from 'styled-components';
-import { Nav } from "./components/Nav";
-import { Layout } from "./components/Layout";
 import { Money } from "./views/Money";
 import { Tags } from "./views/Tags";
 import { Statistics } from "./views/Statistics";
 import { NoMatch } from "./components/NoMatch";
-
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-const Main = styled.div`
-  flex-grow: 1; // 膨胀指数
-  overflow: auto;
-`;
-
 
 function App() {
     return (
