@@ -46,3 +46,7 @@ body{
   font-size: 16px;
   line-height: 1.2; // 行高，默认的是1.15，按照常规来说设置成1.2，一开始就要设置好
 }
+.icon{
+  height: 1em; // em代表一个字符
+  width: 1em; // em代表一个字符
+}
