@@ -355,8 +355,12 @@ module.exports = function (webpackEnv) {
             {
               test: /\.svg$/,
               use: [
-                { loader: 'svg-sprite-loader', options: {} },
-                { loader: 'svgo-loader',options: {}}
+                {loader: 'svg-sprite-loader', options: {}},
+                {
+                  loader: 'svgo-loader', options: {
+                    configFile: './scripts/svgo.config.js'
+                  }
+                }
               ]
             },
             // https://github.com/jshttp/mime-db
