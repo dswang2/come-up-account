@@ -3,7 +3,7 @@ import { Layout } from "../components/Layout";
 
 const Money = () => {
     return (
-        <Layout>
+        <MyLayout>
             <TagsSection>
                 <ol>
                     <li>衣</li>
@@ -45,14 +45,23 @@ const Money = () => {
                 </div>
 
             </NumberPadSection>
-        </Layout>
+        </MyLayout>
     );
 }
+
+const MyLayout = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+`
 
 const TagsSection = styled.section`
   background: #FFFFFF;
   padding: 12px 16px;
-
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
   > ol {
     margin: 0 -12px;
 
