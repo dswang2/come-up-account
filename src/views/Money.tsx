@@ -47,7 +47,33 @@ const Money = () => {
 }
 
 const TagsSection = styled.section`
+  background: #FFFFFF;
+  padding: 12px 16px;
+
+  > ol {
+    margin: 0 -12px;
+
+    > li {
+      background: #D9D9D9;
+      border-radius: 18px;
+      display: inline-block;
+      padding: 4px 18px;
+      font-size: 14px;
+      line-height: 16px;
+      margin: 8px 12px;
+    }
+  }
+
+  > button {
+    background: none;
+    border: none;
+    padding: 1px 4px;
+    border-bottom: 1px solid #333;
+    color: #666;
+    margin-top: 8px;
+  }
 `;
+
 const NotesSection = styled.section`
 `;
 const CategorySection = styled.section`
