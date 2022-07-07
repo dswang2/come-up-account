@@ -1,6 +1,16 @@
 import styled from "styled-components";
+import React from "react";
 
-const TagsSection = styled.section`
+type Props = {
+    children?: React.ReactNode;
+}
+const TagsSection: React.FunctionComponent<Props> = (props:Props) => {
+    return (
+        <_TagsSection>{props.children}</_TagsSection>
+    );
+}
+
+const _TagsSection = styled.section`
   background: #FFFFFF;
   padding: 12px 16px;
   flex-grow: 1;
@@ -8,6 +18,7 @@ const TagsSection = styled.section`
   flex-direction: column;
   justify-content: end;
   align-items: start;
+
   > ol {
     margin: 0 -12px;
 

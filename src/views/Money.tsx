@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Layout } from "../components/Layout";
-import { TagsSection } from "./money/TagsSection";
 import { CategorySection } from "./money/CategorySection";
 import { NotesSection } from "./money/NotesSection";
 import { NumberPadSection } from "./money/NumberPadSection";
+import { TagsSection } from "./money/TagsSection";
 
 const Money = () => {
     return (
