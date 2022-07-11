@@ -7,12 +7,12 @@ type Props = {
 const CategorySection: React.FunctionComponent<Props> = () => {
     const categoryMap = { '-': '支出', '+': '收入' }
     const [category, setCategory] = useState<(keyof typeof categoryMap)>('-'); // 保存当前状态的
-    const [categoryList, setCategoryList] = useState<(keyof typeof categoryMap)[]>(['-', '+']);
+    const [categoryList] = useState<(keyof typeof categoryMap)[]>(['-', '+']);
     return (<Wrapper>
         <ul>
             {categoryList.map((c) =>
                 <li key={c}
-                    className={category == c ? "selected" : ""}
+                    className={category === c ? "selected" : ""}
                     onClick={() => {
                         setCategory(c);
                     }}>{categoryMap[c]}

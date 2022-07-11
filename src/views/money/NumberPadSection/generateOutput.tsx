@@ -11,19 +11,16 @@ const generateOutput = (text: string, outPut = '0') => {
         case '7':
         case '8':
         case '9':
-        case '0':
             if (outPut === '0') {
                 return text;
             } else {
                 return outPut + text;
             }
-            break;
         case '.':
             if (outPut.indexOf('.') >= 0) {
                 return outPut;
             }
             return outPut + text;
-            break;
         case '删除':
             console.log("ddsw--")
             if (outPut.length === 1) {
@@ -31,15 +28,12 @@ const generateOutput = (text: string, outPut = '0') => {
             } else {
                 return outPut.slice(0, -1);
             }
-            break
         case '清空':
             console.log("ddsw1--")
             return '';
-            break;
         default:
             return '';
     }
-    return '';
 }
 
 export { generateOutput };
