@@ -1,28 +1,24 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-// const Button2 = React.forwardRef((props, ref) => {
-//     return <input ref={ref} {...props} />;
-// })
-
 type Props = {
     children?: React.ReactNode;
 }
 const NotesSection: React.FunctionComponent<Props> = (props) => {
     const [notes, setNotes] = useState('');
-    const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     return (<Wrapper>
         <label>
             <span>备注</span>
             <input type="text"
                    ref={inputRef}
                    placeholder={"在这里添加备注"}
-                   value={notes}
-                   onChange={(e) => {
-                       setNotes(e.target.value);
-                       // if(inputRef && inputRef.current){
-                       //     setNotes(inputRef.current.value);
-                       // }
+                   defaultValue={notes}
+                   onBlur={(e) => {
+                       // setNotes(e.target.value);
+                       if(inputRef && inputRef.current){
+                           setNotes(inputRef.current.value);
+                       }
                    }}
             />
         </label>
