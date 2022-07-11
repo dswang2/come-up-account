@@ -1,22 +1,29 @@
 import { useState } from "react";
 import { Wrapper } from "./NumberPadSection/Wrapper";
 import { generateOutput } from "./NumberPadSection/generateOutput";
+import { Category } from "./CategorySection/Category";
 
 type Props = {
     children?: React.ReactNode;
+    value: number;
+    onChange: (value: number) => void;
+    onOk?: () => void;
 }
 
 const NumberPadSection: React.FunctionComponent<Props> = (props) => {
     // 数字
-    const [outPut, _setOutPut] = useState('0');
+    // const [outPut, _setOutPut] = useState('0');
+    const outPut = props.value;
     const setOutPut = (output: string) => {
+        let value;
         if (output.length > 16) {
-            _setOutPut(output.slice(0, 16));
+            value = parseFloat(output.slice(0, 16)); // 会删除末尾的0
         } else if (output.length === 0) {
-            _setOutPut('0');
+            value = parseFloat('0');
         } else {
-            _setOutPut(output);
+            value = parseFloat(output);
         }
+        props.onChange(value);
     }
     const onClickButtonWrapper = (e: React.MouseEvent<HTMLDivElement>) => {
         const text = (e.target as HTMLButtonElement).textContent;
@@ -26,7 +33,7 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
             return;
         }
         if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
-            setOutPut(generateOutput(text, outPut));
+            setOutPut(generateOutput(text, outPut.toString()));
         }
     }
     return (<Wrapper>

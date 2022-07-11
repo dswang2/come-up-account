@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 type Props = {
     children?: React.ReactNode;
+    value: string;
+    onChange: (value: string) => void;
 }
 const NotesSection: React.FunctionComponent<Props> = (props) => {
-    const [notes, setNotes] = useState('');
+    // const [notes, setNotes] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
+    const notes = props.value;
     return (<Wrapper>
         <label>
             <span>备注</span>
@@ -17,7 +20,7 @@ const NotesSection: React.FunctionComponent<Props> = (props) => {
                    onBlur={(e) => {
                        // setNotes(e.target.value);
                        if(inputRef && inputRef.current){
-                           setNotes(inputRef.current.value);
+                           props.onChange(inputRef.current.value);
                        }
                    }}
             />
