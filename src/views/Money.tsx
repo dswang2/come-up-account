@@ -15,32 +15,22 @@ const Money = () => {
         amount: 0
     });
     console.log("ddsw", selected);
+    const onChange = (obj: Partial<typeof selected>) => {
+        setSelected({
+            ...selected,
+            ...obj
+        });
+    }
     return (
         <MyLayout>
             <TagsSection value={selected.tags}
-                         onChange={
-                             (value: string[]) => {
-                                 setSelected({ ...selected, tags: value });
-                             }
-                         }/>
+                         onChange={(value: string[]) => onChange({ tags: value })}/>
             <NotesSection value={selected.note}
-                          onChange={
-                              (value: string) => {
-                                  setSelected({ ...selected, note: value });
-                              }
-                          }/>
+                          onChange={(value: string) => onChange({ note: value })}/>
             <CategorySection value={selected.category}
-                             onChange={
-                                 (value: Category) => {
-                                     setSelected({ ...selected, category: value });
-                                 }
-                             }/>
+                             onChange={(value: Category) => onChange({ category: value })}/>
             <NumberPadSection value={selected.amount}
-                              onChange={
-                                  (value: number) => {
-                                      setSelected({ ...selected, amount: value });
-                                  }
-                              }/>
+                              onChange={(value: number) => onChange({ amount: value })}/>
         </MyLayout>
     );
 }
