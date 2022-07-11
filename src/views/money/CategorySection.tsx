@@ -5,19 +5,18 @@ type Props = {
     children?: React.ReactNode;
 }
 const CategorySection: React.FunctionComponent<Props> = () => {
-    const [category, setCategory] = useState('-');
+    const categoryMap = { '-': '支出', '+': '收入' }
+    const [category, setCategory] = useState<(keyof typeof categoryMap)>('-'); // 保存当前状态的
+    const [categoryList, setCategoryList] = useState<(keyof typeof categoryMap)[]>(['-', '+']);
     return (<Wrapper>
         <ul>
-            <li className={category == '-' ? "selected" : ""}
-                onClick={() => {
-                    setCategory('-');
-                }}>支出
-            </li>
-            <li className={category == '+' ? "selected" : ""}
-                onClick={() => {
-                    setCategory('+');
-                }}>收入
-            </li>
+            {categoryList.map((c) =>
+                <li key={c}
+                    className={category == c ? "selected" : ""}
+                    onClick={() => {
+                        setCategory(c);
+                    }}>{categoryMap[c]}
+                </li>)}
         </ul>
     </Wrapper>);
 }
