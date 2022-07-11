@@ -5,8 +5,8 @@ import { Category } from "./CategorySection/Category";
 
 type Props = {
     children?: React.ReactNode;
-    value: number;
-    onChange: (value: number) => void;
+    value: string;
+    onChange: (value: string) => void;
     onOk?: () => void;
 }
 
@@ -17,11 +17,11 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
     const setOutPut = (output: string) => {
         let value;
         if (output.length > 16) {
-            value = parseFloat(output.slice(0, 16)); // 会删除末尾的0
+            value = output.slice(0, 16); // 会删除末尾的0
         } else if (output.length === 0) {
-            value = parseFloat('0');
+            value = '0';
         } else {
-            value = parseFloat(output);
+            value = output;
         }
         props.onChange(value);
     }

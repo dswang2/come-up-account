@@ -12,7 +12,7 @@ const Money = () => {
         tags: [] as string[],
         note: '',
         category: '-' as Category,
-        amount: 0
+        amount: '0'
     });
     console.log("ddsw", selected);
     const onChange = (obj: Partial<typeof selected>) => {
@@ -30,7 +30,7 @@ const Money = () => {
             <CategorySection value={selected.category}
                              onChange={(value: Category) => onChange({ category: value })}/>
             <NumberPadSection value={selected.amount}
-                              onChange={(value: number) => onChange({ amount: value })}/>
+                              onChange={(value: string) => onChange({ amount: value })}/>
         </MyLayout>
     );
 }
