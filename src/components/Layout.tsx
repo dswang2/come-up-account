@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { Nav } from "./Nav";
 
-const Layout = (props: any) => {
+type Props = {
+    children?: React.ReactNode;
+    className?: string;
+}
+const Layout: React.FunctionComponent<Props> = (props) => {
     return (
         <Wrapper>
             <Main className={props.className}>
