@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
+import { useTags } from "../../hooks/useTags";
 
 type Props = {
     children?: React.ReactNode;
@@ -7,7 +8,8 @@ type Props = {
     onChange: (value: string[]) => void;
 }
 const TagsSection: React.FunctionComponent<Props> = (props) => {
-    const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+    // const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+    const {tags, setTags} = useTags();
     // const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const selectedTags = props.value;
     const onAddTag = () => {
