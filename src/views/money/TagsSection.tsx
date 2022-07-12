@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import React, { useState } from "react";
 import { useTags } from "../../hooks/useTags";
 
 type Props = {
