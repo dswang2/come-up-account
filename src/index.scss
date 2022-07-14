@@ -57,8 +57,14 @@ button{
 :focus{
   outline: none; // 去掉边框
 }
-.clearfix::after{
+.clearfix::after {
   content: '';
   display: block;
   clear: both;
+}
+
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

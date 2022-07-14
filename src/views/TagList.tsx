@@ -2,21 +2,30 @@ import styled from "styled-components";
 import { Layout } from "../components/Layout";
 import { useTags } from "../hooks/useTags";
 import { Icon } from "../components/Icon";
+import { Link } from "react-router-dom";
 
-const Tags = () => {
+const TagList = () => {
     const { tags, setTags } = useTags();
+    const onAddTag = () => {
+        const tagName = window.prompt("新标签名称为");
+        if (tagName !== null) {
+            setTags([...tags, tagName]);
+        }
+    }
     return (
         <Layout>
             <Wrapper>
                 <ol>
                     {tags.map((tag) => {
                         return (<li>
-                            {tag}
-                            <Icon name={"right"}/>
+                            <Link to={'/tags/' + tag}>
+                                <span className={"oneLine"}>{tag}</span>
+                                <Icon name={"right"}/>
+                            </Link>
                         </li>);
                     })}
                 </ol>
-                <button>新建标签</button>
+                <button onClick={onAddTag}>新建标签</button>
             </Wrapper>
         </Layout>
     );
@@ -37,12 +46,14 @@ const Wrapper = styled.div`
       //background: white;
       border-bottom: 1px solid #BCBBC1;
       //box-shadow: inset 0px -0.5px 0px #BCBBC1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px 16px 0px;
       margin-left: 16px;
       line-height: 16px;
+      > a {
+        padding: 12px 16px 16px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
 
@@ -63,4 +74,4 @@ const Wrapper = styled.div`
 
 `
 
-export { Tags };
+export { TagList };
