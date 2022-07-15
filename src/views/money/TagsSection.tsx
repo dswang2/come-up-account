@@ -9,15 +9,9 @@ type Props = {
 }
 const TagsSection: React.FunctionComponent<Props> = (props) => {
     // const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-    const {tags, setTags} = useTags();
+    const { tags, setTags, onAddTag } = useTags();
     // const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const selectedTags = props.value;
-    const onAddTag = () => {
-        const tagName = window.prompt("新标签名称为");
-        if (tagName !== null) {
-            setTags([...tags, { id: createId(), name: tagName }]);
-        }
-    }
     const onToggleTag = (tagId: number) => {
         const index = selectedTags.indexOf(tagId);
         if (index >= 0) {

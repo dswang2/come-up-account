@@ -6,13 +6,7 @@ import { Link } from "react-router-dom";
 import { createId } from "../lib/createId";
 
 const TagList = () => {
-    const { tags, setTags } = useTags();
-    const onAddTag = () => {
-        const tagName = window.prompt("新标签名称为");
-        if (tagName !== null) {
-            setTags([...tags, { id: createId(), name: tagName }]);
-        }
-    }
+    const { tags, setTags, onAddTag } = useTags();
     return (
         <Layout>
             <Wrapper>

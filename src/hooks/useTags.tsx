@@ -9,7 +9,13 @@ const defaultTags = [
 ];
 const useTags = () => {
     const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags);
-    return { tags, setTags };
+    const onAddTag = () => {
+        const tagName = window.prompt("新标签名称为");
+        if (tagName !== null) {
+            setTags([...tags, { id: createId(), name: tagName }]);
+        }
+    }
+    return { tags, onAddTag, setTags };
 }
 
 export {useTags};
