@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useTags } from "../../hooks/useTags";
+import { createId } from "../../lib/createId";
 
 type Props = {
     children?: React.ReactNode;
@@ -14,7 +15,7 @@ const TagsSection: React.FunctionComponent<Props> = (props) => {
     const onAddTag = () => {
         const tagName = window.prompt("新标签名称为");
         if (tagName !== null) {
-            setTags([...tags, { id: Math.random(), name: tagName }]);
+            setTags([...tags, { id: createId(), name: tagName }]);
         }
     }
     const onToggleTag = (tagId: number) => {
@@ -32,7 +33,7 @@ const TagsSection: React.FunctionComponent<Props> = (props) => {
                 {tags.map((tag:any) => {
                     return <li key={tag.id} onClick={() => {
                         onToggleTag(tag.id)
-                    }} className={getClass(tag.id)}>{tag.name}</li>
+                    }} className={getClass(tag.id)}>{tag.id}{`-`}{tag.name}</li>
                 })}
             </ol>
             <button onClick={onAddTag}>新增标签</button>

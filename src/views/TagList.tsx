@@ -3,13 +3,14 @@ import { Layout } from "../components/Layout";
 import { useTags } from "../hooks/useTags";
 import { Icon } from "../components/Icon";
 import { Link } from "react-router-dom";
+import { createId } from "../lib/createId";
 
 const TagList = () => {
     const { tags, setTags } = useTags();
     const onAddTag = () => {
         const tagName = window.prompt("新标签名称为");
         if (tagName !== null) {
-            setTags([...tags, { id: Math.random(), name: tagName }]);
+            setTags([...tags, { id: createId(), name: tagName }]);
         }
     }
     return (
@@ -19,7 +20,7 @@ const TagList = () => {
                     {tags.map((tag:any) => {
                         return (<li>
                             <Link to={'/tags/' + tag.name}>
-                                <span className={"oneLine"}>{tag.name}</span>
+                                <span className={"oneLine"}>{tag.id}{`-`}{tag.name}</span>
                                 <Icon name={"right"}/>
                             </Link>
                         </li>);
@@ -32,7 +33,7 @@ const TagList = () => {
 }
 
 const Wrapper = styled.div`
-  height: 100%; // 这是必须的
+  max-height: 100%; // 这是必须的
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,7 +42,7 @@ const Wrapper = styled.div`
     width: 100%;
     font-size: 16px;
     background: white;
-    flex-grow: 1; // 膨胀指数
+    flex-shrink: 1;
     overflow: auto;
     ::-webkit-scrollbar {
       display: none; /* Chrome Safari */
@@ -63,6 +64,7 @@ const Wrapper = styled.div`
 
   > button {
     margin-top: 52px;
+    margin-bottom: 16px;
     margin-left: auto;
     margin-right: auto;
     border: none;
