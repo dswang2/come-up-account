@@ -32,6 +32,7 @@ const TagList = () => {
 }
 
 const Wrapper = styled.div`
+  height: 100%; // 这是必须的
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,6 +43,9 @@ const Wrapper = styled.div`
     background: white;
     flex-grow: 1; // 膨胀指数
     overflow: auto;
+    ::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
     > li {
       //background: white;
       border-bottom: 1px solid #BCBBC1;
