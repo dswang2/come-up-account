@@ -13,7 +13,7 @@ const TagList = () => {
                 <ol>
                     {tags.map((tag:any) => {
                         return (<li>
-                            <Link to={'/tags/' + tag.name}>
+                            <Link to={'/tags/' + tag.id}>
                                 <span className={"oneLine"}>{tag.id}{`-`}{tag.name}</span>
                                 <Icon name={"right"}/>
                             </Link>

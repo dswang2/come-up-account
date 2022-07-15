@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createId } from "../lib/createId";
+import { TagEntity } from "../types/Tag";
 
 const defaultTags = [
     { id: createId(), name: '衣' },
@@ -8,14 +9,17 @@ const defaultTags = [
     { id: createId(), name: '行' }
 ];
 const useTags = () => {
-    const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags);
+    const [tags, setTags] = useState<TagEntity[]>(defaultTags);
     const onAddTag = () => {
         const tagName = window.prompt("新标签名称为");
         if (tagName !== null) {
             setTags([...tags, { id: createId(), name: tagName }]);
         }
     }
-    return { tags, onAddTag, setTags };
+    const getTagById = (id: number): TagEntity => {
+        return tags.filter((t) => t.id === id)[0] || {};
+    }
+    return { tags, onAddTag, setTags, getTagById };
 }
 
 export {useTags};
