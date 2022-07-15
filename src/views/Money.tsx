@@ -9,7 +9,7 @@ import { Category } from "./money/CategorySection/Category";
 
 const Money = () => {
     const [selected, setSelected] = useState({
-        tags: [] as string[],
+        tagIds: [] as number[],
         note: '',
         category: '-' as Category,
         amount: '0'
@@ -23,8 +23,8 @@ const Money = () => {
     }
     return (
         <MyLayout>
-            <TagsSection value={selected.tags}
-                         onChange={(value: string[]) => onChange({ tags: value })}/>
+            <TagsSection value={selected.tagIds}
+                         onChange={(value: number[]) => onChange({ tagIds: value })}/>
             <NotesSection value={selected.note}
                           onChange={(value: string) => onChange({ note: value })}/>
             <CategorySection value={selected.category}

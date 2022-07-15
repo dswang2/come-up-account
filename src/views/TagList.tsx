@@ -9,17 +9,17 @@ const TagList = () => {
     const onAddTag = () => {
         const tagName = window.prompt("新标签名称为");
         if (tagName !== null) {
-            setTags([...tags, tagName]);
+            setTags([...tags, { id: Math.random(), name: tagName }]);
         }
     }
     return (
         <Layout>
             <Wrapper>
                 <ol>
-                    {tags.map((tag) => {
+                    {tags.map((tag:any) => {
                         return (<li>
-                            <Link to={'/tags/' + tag}>
-                                <span className={"oneLine"}>{tag}</span>
+                            <Link to={'/tags/' + tag.name}>
+                                <span className={"oneLine"}>{tag.name}</span>
                                 <Icon name={"right"}/>
                             </Link>
                         </li>);
