@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useTags } from "../../hooks/useTags";
-import { createId } from "../../lib/createId";
 
 type Props = {
     children?: React.ReactNode;
@@ -9,7 +8,7 @@ type Props = {
 }
 const TagsSection: React.FunctionComponent<Props> = (props) => {
     // const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-    const { tags, setTags, onAddTag } = useTags();
+    const { tags, onAddTag } = useTags();
     // const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const selectedTags = props.value;
     const onToggleTag = (tagId: number) => {

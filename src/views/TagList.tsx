@@ -3,16 +3,16 @@ import { Layout } from "../components/Layout";
 import { useTags } from "../hooks/useTags";
 import { Icon } from "../components/Icon";
 import { Link } from "react-router-dom";
-import { createId } from "../lib/createId";
+import { Button } from "../components/Button";
 
 const TagList = () => {
-    const { tags, setTags, onAddTag } = useTags();
+    const { tags, onAddTag } = useTags();
     return (
         <Layout>
             <Wrapper>
                 <ol>
                     {tags.map((tag:any) => {
-                        return (<li>
+                        return (<li key={tag.id}>
                             <Link to={'/tags/' + tag.id}>
                                 <span className={"oneLine"}>{tag.id}{`-`}{tag.name}</span>
                                 <Icon name={"right"}/>
@@ -20,18 +20,18 @@ const TagList = () => {
                         </li>);
                     })}
                 </ol>
-                <button onClick={onAddTag}>新建标签</button>
+                <Button onClick={onAddTag}>新建标签</Button>
             </Wrapper>
         </Layout>
     );
 }
-
 const Wrapper = styled.div`
   max-height: 100%; // 这是必须的
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   > ol {
     width: 100%;
     font-size: 16px;
@@ -59,17 +59,6 @@ const Wrapper = styled.div`
   > button {
     margin-top: 52px;
     margin-bottom: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    border: none;
-    background: #767676;
-    border-radius: 4px;
-    font-size: 18px;
-    line-height: 20px;
-    padding: 10px 16px;
-    color: white;
-    flex-grow: 0; // 膨胀指数
-    overflow: auto;
   }
 
 `

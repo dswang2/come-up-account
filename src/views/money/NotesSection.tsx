@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import { Input } from "../../components/Input";
 
 type Props = {
     children?: React.ReactNode;
@@ -11,24 +12,21 @@ const NotesSection: React.FunctionComponent<Props> = (props) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const notes = props.value;
     return (<Wrapper>
-        <label>
-            <span>备注</span>
-            <input type="text"
-                   ref={inputRef}
-                   placeholder={"在这里添加备注"}
-                   defaultValue={notes}
-                   onBlur={(e) => {
-                       // setNotes(e.target.value);
-                       if(inputRef && inputRef.current){
-                           props.onChange(inputRef.current.value);
-                       }
-                   }}
-            />
-        </label>
+        <Input label={"备注"}
+               ref={inputRef}
+               placeholder={"请填写备注"}
+            // value={notes}
+            // onChange={(e) => {
+            //     props.onChange(e.target.value);
+            // }}
+               defaultValue={notes}
+               onBlur={(e) => {
+                   if (inputRef && inputRef.current) {
+                       props.onChange(inputRef.current.value);
+                   }
+               }}/>
     </Wrapper>);
 }
-
-
 
 
 const Wrapper = styled.section`
