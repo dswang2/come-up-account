@@ -11,9 +11,10 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 // 声明参数的类型，类似于java中的实体类
 type Props = {
     name: string;
-}
+} & React.SVGAttributes<SVGElement>
 const Icon = (props: Props) => {
-    return (<svg className={"icon"}>
+    const { name, ...rest } = props;
+    return (<svg className={"icon"} {...rest}>
         {/*其中money是id，就等于文件名*/}
         <use xlinkHref={'#' + props.name}/>
     </svg>);

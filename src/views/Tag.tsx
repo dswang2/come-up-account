@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useTags } from "../hooks/useTags";
 import { Layout } from "../components/Layout";
 import { Icon } from "../components/Icon";
@@ -13,10 +13,15 @@ const Tag: React.FunctionComponent = (props) => {
     const { getTagById } = useTags();
     let { id: idString = "0" } = useParams<Params>();
     const tag = getTagById(parseInt(idString));
+    const navigate = useNavigate();
+    const onClickBack = () => {
+        console.log("ddsw-back");
+        navigate(-1);
+    }
     return (
         <Layout>
             <Wrapper>
-                <div><Icon name={"left"}/><span>编辑标签</span></div>
+                <div><Icon name={"left"} onClick={onClickBack}/><span>编辑标签</span></div>
                 <Input ref={null} placeholder={"标签名"} label={"标签名"} defaultValue={tag.name}/>
                 <Button>删除标签</Button>
             </Wrapper>
