@@ -6,15 +6,17 @@ import { Button } from "../components/Button";
 import styled from "styled-components";
 import { Input } from "../components/Input";
 import { useRef } from "react";
+import { Center } from "../components/Center";
 
 type Params = {
     id: string;
 }
 const Tag: React.FunctionComponent = (props) => {
-    const { getTagById, updateTag} = useTags();
+    const { getTagById, updateTag, deleteTag, tags} = useTags();
     let { id: idString = "0" } = useParams<Params>();
     const tag = getTagById(parseInt(idString));
-    console.log("ddsw",tag);
+    console.log("ddsw-tags:",tags);
+    console.log("ddsw-tag:",tag);
     const navigate = useNavigate();
     const inputRef = useRef<HTMLInputElement>(null);
     const onClickBack = () => {
@@ -23,7 +25,7 @@ const Tag: React.FunctionComponent = (props) => {
     }
     return (
         <Layout>
-            <Wrapper>
+            {tag?  <Wrapper>
                 <div><Icon name={"left"} onClick={onClickBack}/><span>编辑标签</span></div>
                 <Input ref={inputRef}
                        placeholder={"标签名"}
@@ -33,8 +35,10 @@ const Tag: React.FunctionComponent = (props) => {
                                updateTag(tag.id, inputRef.current.value);
                            }
                 }}/>
-                <Button>删除标签</Button>
-            </Wrapper>
+                <Button onClick={() => {
+                    deleteTag(tag.id);
+                }}>删除标签</Button>
+            </Wrapper> : <Center>tag不存在</Center>}
         </Layout>);
 }
 
