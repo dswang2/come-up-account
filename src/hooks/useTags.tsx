@@ -10,6 +10,11 @@ const defaultTags = [
 ];
 const useTags = () => {
     const [tags, setTags] = useState<TagEntity[]>(defaultTags);
+    const updateTag = (id: number, name: string) => {
+        setTags(tags.map((t) => {
+            return t.id === id ? { id, name } : t;
+        }));
+    }
     const onAddTag = () => {
         const tagName = window.prompt("新标签名称为");
         if (tagName !== null) {
@@ -19,7 +24,7 @@ const useTags = () => {
     const getTagById = (id: number): TagEntity => {
         return tags.filter((t) => t.id === id)[0] || {};
     }
-    return { tags, onAddTag, setTags, getTagById };
+    return { tags, onAddTag, setTags, getTagById, updateTag };
 }
 
 export {useTags};

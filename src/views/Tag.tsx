@@ -5,15 +5,18 @@ import { Icon } from "../components/Icon";
 import { Button } from "../components/Button";
 import styled from "styled-components";
 import { Input } from "../components/Input";
+import { useRef } from "react";
 
 type Params = {
     id: string;
 }
 const Tag: React.FunctionComponent = (props) => {
-    const { getTagById } = useTags();
+    const { getTagById, updateTag} = useTags();
     let { id: idString = "0" } = useParams<Params>();
     const tag = getTagById(parseInt(idString));
+    console.log("ddsw",tag);
     const navigate = useNavigate();
+    const inputRef = useRef<HTMLInputElement>(null);
     const onClickBack = () => {
         console.log("ddsw-back");
         navigate(-1);
@@ -22,7 +25,14 @@ const Tag: React.FunctionComponent = (props) => {
         <Layout>
             <Wrapper>
                 <div><Icon name={"left"} onClick={onClickBack}/><span>编辑标签</span></div>
-                <Input ref={null} placeholder={"标签名"} label={"标签名"} defaultValue={tag.name}/>
+                <Input ref={inputRef}
+                       placeholder={"标签名"}
+                       label={"标签名"}
+                       defaultValue={tag.name} onBlur={() => {
+                           if(inputRef && inputRef.current){
+                               updateTag(tag.id, inputRef.current.value);
+                           }
+                }}/>
                 <Button>删除标签</Button>
             </Wrapper>
         </Layout>);
