@@ -5,7 +5,8 @@ type Props = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = (props: Props) => {
-    return (<Wrapper>{props.children}</Wrapper>);
+    const {children, ...rest} = props;
+    return (<Wrapper {...rest}>{props.children}</Wrapper>);
 }
 
 const Wrapper = styled.button`
