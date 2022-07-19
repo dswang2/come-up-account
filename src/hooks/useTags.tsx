@@ -1,14 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createId } from "../lib/createId";
 import { TagEntity } from "../types/Tag";
 
 const useTags = () => {
     const [tags, setTags] = useState<TagEntity[]>([]);
+    const count = useRef(0);
+    useEffect(() => {
+        count.current += 1;
+    })
     useEffect(() => {
         setTags(JSON.parse(window.localStorage.getItem("tags")||'[]'));
     },[]); // 依赖数据为空数组时，表示初始化
     useEffect(() => {
-        window.localStorage.setItem("tags", JSON.stringify(tags));
+        if(count.current > 1){
+            window.localStorage.setItem("tags", JSON.stringify(tags));
+        }
     },[tags]); // tags引用更新时触发，这也就要求，更新tags，不能只更新值，而是要更新tags的地址
     const updateTag = (id: number, name: string) => {
         setTags(tags.map((t) => {
