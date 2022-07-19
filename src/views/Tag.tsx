@@ -37,6 +37,7 @@ const Tag: React.FunctionComponent = (props) => {
                 }}/>
                 <Button onClick={() => {
                     deleteTag(tag.id);
+                        navigate(-1);
                 }}>删除标签</Button>
             </Wrapper> : <Center>tag不存在</Center>}
         </Layout>);
