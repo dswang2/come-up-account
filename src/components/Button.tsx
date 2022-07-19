@@ -1,14 +1,11 @@
 import styled from "styled-components";
-
 type Props = {
     children: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 const Button = (props: Props) => {
     const {children, ...rest} = props;
     return (<Wrapper {...rest}>{props.children}</Wrapper>);
 }
-
 const Wrapper = styled.button`
   margin-left: auto;
   margin-right: auto;
