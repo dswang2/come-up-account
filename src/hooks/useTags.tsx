@@ -3,19 +3,17 @@ import { createId } from "../lib/createId";
 import { TagEntity } from "../types/Tag";
 import { useUpdate } from "./useUpdate";
 
-const defaultTags = [
-    { id: createId(), name: '衣' },
-    { id: createId(), name: '食' },
-    { id: createId(), name: '住' },
-    { id: createId(), name: '行' }
-];
-
 const useTags = () => {
     const [tags, setTags] = useState<TagEntity[]>([]);
     useEffect(() => {
         let localTags = JSON.parse(window.localStorage.getItem("tags")||'[]');
         if(localTags.length === 0 ){
-            localTags = defaultTags;
+            localTags = [
+                { id: createId(), name: '衣' },
+                { id: createId(), name: '食' },
+                { id: createId(), name: '住' },
+                { id: createId(), name: '行' }
+            ];
         }
         setTags(localTags);
     },[]); // 依赖数据为空数组时，表示初始化
