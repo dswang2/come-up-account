@@ -5,15 +5,17 @@ import { CategorySection } from "./money/CategorySection";
 import { NotesSection } from "./money/NotesSection";
 import { NumberPadSection } from "./money/NumberPadSection";
 import { TagsSection } from "./money/TagsSection";
-import { Category } from "./money/CategorySection/Category";
+import { Category } from "../types/Category";
+import { useRecords } from "../hooks/useRecords";
 
 const Money = () => {
-    const [selected, setSelected] = useState({
+    const defaultRecord = {
         tagIds: [] as number[],
         note: '',
         category: '-' as Category,
         amount: '0'
-    });
+    };
+    const [selected, setSelected] = useState(defaultRecord);
     console.log("ddsw", selected);
     const onChange = (obj: Partial<typeof selected>) => {
         setSelected({
@@ -21,8 +23,18 @@ const Money = () => {
             ...obj
         });
     }
+    const {addRecord} = useRecords();
+    const submit = () => {
+
+        if(addRecord(selected)){
+            alert("保存成功");
+            setSelected(defaultRecord);
+        };
+    }
     return (
         <MyLayout>
+            {JSON.stringify(selected)};
+            <hr/>
             <TagsSection value={selected.tagIds}
                          onChange={(value: number[]) => onChange({ tagIds: value })}/>
             <NotesSection value={selected.note}
@@ -30,7 +42,8 @@ const Money = () => {
             <CategorySection value={selected.category}
                              onChange={(value: Category) => onChange({ category: value })}/>
             <NumberPadSection value={selected.amount}
-                              onChange={(value: string) => onChange({ amount: value })}/>
+                              onChange={(value: string) => onChange({ amount: value })}
+                              onOk={submit}/>
         </MyLayout>
     );
 }

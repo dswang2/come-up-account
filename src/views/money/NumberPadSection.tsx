@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Wrapper } from "./NumberPadSection/Wrapper";
 import { generateOutput } from "./NumberPadSection/generateOutput";
-import { Category } from "./CategorySection/Category";
+import { Category } from "../../types/Category";
 
 type Props = {
     children?: React.ReactNode;
@@ -29,7 +29,9 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
         const text = (e.target as HTMLButtonElement).textContent;
         if (!text) return;
         if (text === 'OK') {
-            // todo
+            if(props.onOk){
+                props.onOk();
+            }
             return;
         }
         if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {

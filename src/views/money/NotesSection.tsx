@@ -11,20 +11,23 @@ const NotesSection: React.FunctionComponent<Props> = (props) => {
     // const [notes, setNotes] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
     const notes = props.value;
+    console.log("ddsw", "Note", notes);
     return (<Wrapper>
         <Input label={"备注"}
                ref={inputRef}
                placeholder={"请填写备注"}
-            // value={notes}
-            // onChange={(e) => {
-            //     props.onChange(e.target.value);
-            // }}
-               defaultValue={notes}
-               onBlur={(e) => {
-                   if (inputRef && inputRef.current) {
-                       props.onChange(inputRef.current.value);
-                   }
-               }}/>
+               value={notes}
+               onChange={(e) => {
+                   props.onChange(e.target.value);
+               }}
+               // 非受控组件不好刷新，一般不使用
+               // defaultValue={notes}
+               // onBlur={(e) => {
+               //     if (inputRef && inputRef.current) {
+               //         props.onChange(inputRef.current.value);
+               //     }
+               // }}
+        />
     </Wrapper>);
 }
 

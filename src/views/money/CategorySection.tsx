@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Category } from "./CategorySection/Category";
+import { Category } from "../../types/Category";
 
 type Props = {
     children?: React.ReactNode;
