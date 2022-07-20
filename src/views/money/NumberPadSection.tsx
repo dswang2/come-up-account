@@ -5,17 +5,16 @@ import { Category } from "../../types/Category";
 
 type Props = {
     children?: React.ReactNode;
-    value: string;
-    onChange: (value: string) => void;
+    value: number;
+    onChange: (value: number) => void;
     onOk?: () => void;
 }
 
 const NumberPadSection: React.FunctionComponent<Props> = (props) => {
     // 数字
-    // const [outPut, _setOutPut] = useState('0');
-    const outPut = props.value;
+    const [outPut, _setOutPut] = useState<string>(props.value.toString());
     const setOutPut = (output: string) => {
-        let value;
+        let value: string;
         if (output.length > 16) {
             value = output.slice(0, 16); // 会删除末尾的0
         } else if (output.length === 0) {
@@ -23,7 +22,8 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
         } else {
             value = output;
         }
-        props.onChange(value);
+        _setOutPut(value);
+        props.onChange(parseFloat(value));
     }
     const onClickButtonWrapper = (e: React.MouseEvent<HTMLDivElement>) => {
         const text = (e.target as HTMLButtonElement).textContent;

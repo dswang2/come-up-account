@@ -6,7 +6,7 @@ import { useUpdate } from "./useUpdate";
 const useRecords = () => {
     const [records, setRecords] = useState<RecordEntity[]>([]);
     const addRecord = (record: RecordPureEntity) => {
-        if (!(parseFloat(record.amount) && parseFloat(record.amount) > 0)) {
+        if (record.amount <= 0) {
             alert("请输入金额");
             return false;
         }

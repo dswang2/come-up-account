@@ -4,7 +4,7 @@ type RecordEntity = {
     tagIds: number[],
     note: string,
     category: Category,
-    amount: string,
+    amount: number,
     createAt: string,
 }
 

@@ -13,7 +13,7 @@ const Money = () => {
         tagIds: [] as number[],
         note: '',
         category: '-' as Category,
-        amount: '0'
+        amount: 0
     };
     const [selected, setSelected] = useState(defaultRecord);
     console.log("ddsw", selected);
@@ -33,7 +33,6 @@ const Money = () => {
     }
     return (
         <MyLayout>
-            {JSON.stringify(selected)};
             <hr/>
             <TagsSection value={selected.tagIds}
                          onChange={(value: number[]) => onChange({ tagIds: value })}/>
@@ -42,7 +41,7 @@ const Money = () => {
             <CategorySection value={selected.category}
                              onChange={(value: Category) => onChange({ category: value })}/>
             <NumberPadSection value={selected.amount}
-                              onChange={(value: string) => onChange({ amount: value })}
+                              onChange={(value: number) => onChange({ amount: value })}
                               onOk={submit}/>
         </MyLayout>
     );
