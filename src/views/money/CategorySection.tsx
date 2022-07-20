@@ -4,7 +4,7 @@ import { Category } from "../../types/Category";
 
 type Props = {
     children?: React.ReactNode;
-    value: string;
+    value: Category;
     onChange: (value: Category) => void;
 }
 const CategorySection: React.FunctionComponent<Props> = (props) => {
@@ -27,7 +27,6 @@ const CategorySection: React.FunctionComponent<Props> = (props) => {
 const Wrapper = styled.section`
   > ul {
     display: flex;
-    background: #c4c4c4;
     font-size: 24px;
 
     > li {

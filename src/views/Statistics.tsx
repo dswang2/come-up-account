@@ -1,8 +1,23 @@
+import { useState } from "react";
+import styled from "styled-components";
 import { Layout } from "../components/Layout";
+import { Category } from "../types/Category";
+import { CategorySection } from "./money/CategorySection";
 
 const Statistics = () => {
+    const [category,setCategory] = useState<Category>('+');
     return (
-        <Layout><h2>统计页面</h2></Layout>
+        <Layout>
+            <CategoryWrapper>
+                <CategorySection value={category}
+                                 onChange={(value: Category) => {
+                                     setCategory(value);
+                                 }}/>
+            </CategoryWrapper>
+        </Layout>
     );
 }
-export {Statistics};
+const CategoryWrapper = styled.div`
+  background: white;
+`
+export { Statistics };

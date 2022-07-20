@@ -33,13 +33,12 @@ const Money = () => {
     }
     return (
         <MyLayout>
-            <hr/>
             <TagsSection value={selected.tagIds}
                          onChange={(value: number[]) => onChange({ tagIds: value })}/>
             <NotesSection value={selected.note}
                           onChange={(value: string) => onChange({ note: value })}/>
-            <CategorySection value={selected.category}
-                             onChange={(value: Category) => onChange({ category: value })}/>
+            <CategoryWrapper><CategorySection value={selected.category}
+                                              onChange={(value: Category) => onChange({ category: value })}/></CategoryWrapper>
             <NumberPadSection value={selected.amount}
                               onChange={(value: number) => onChange({ amount: value })}
                               onOk={submit}/>
@@ -47,6 +46,9 @@ const Money = () => {
     );
 }
 
+const CategoryWrapper = styled.div`
+  background: #c4c4c4;;
+`
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
