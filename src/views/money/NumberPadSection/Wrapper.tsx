@@ -66,6 +66,17 @@ const Wrapper = styled.section`
         background: #9A9A9A;
       }
     }
+
+    // max-width 表示后面的属性最大适合的高度是 800px
+    // max-width 表示针对 800px 以下的设备增加的css效果
+    @media (max-height: 800px ){
+      >button{
+        height: 40px;
+        &.ok{
+          height: 80px;
+        }
+      }
+    }
   }
 `;
 
