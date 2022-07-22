@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Wrapper } from "./NumberPadSection/Wrapper";
 import { generateOutput } from "./NumberPadSection/generateOutput";
-import { Category } from "../../types/Category";
 
 type Props = {
     children?: React.ReactNode;

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import { createId } from "../lib/createId";
 import { TagEntity } from "../types/Tag";
 import { useUpdate } from "./useUpdate";
@@ -37,7 +37,11 @@ const useTags = () => {
     const getTagById = (id: number): TagEntity => {
         return tags.filter((t) => t.id === id)[0];
     }
-    return { tags, onAddTag, setTags, getTagById, updateTag, deleteTag};
+    const getName = (id: number): string => {
+        const tag = getTagById(id);
+        return tag ? tag.name : "";
+    }
+    return { tags, onAddTag, setTags, getTagById, updateTag, deleteTag, getName};
 }
 
 export {useTags};

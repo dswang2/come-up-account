@@ -9,7 +9,7 @@ const useUpdate = (callback: () => void, deps: any[]) => {
         if (count.current > 1) {
             callback();
         }
-    }, deps); // tags引用更新时触发，这也就要求，更新tags，不能只更新值，而是要更新tags的地址
+    }, [callback, deps]); // tags引用更新时触发，这也就要求，更新tags，不能只更新值，而是要更新tags的地址
 }
 
 export {useUpdate};
