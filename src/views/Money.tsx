@@ -32,7 +32,7 @@ const Money = () => {
         };
     }
     return (
-        <MyLayout>
+        <MyLayout scrollTop={9999}>
             <TagsSection value={selected.tagIds}
                          onChange={(value: number[]) => onChange({ tagIds: value })}/>
             <NotesSection value={selected.note}
